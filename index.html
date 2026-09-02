@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Virtus Ventures</title>
+<meta name="description" content="Virtus Ventures finds the operators the market has not priced yet, and puts them in front of the capital that should have found them first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000;
+  --raise:#121110;
+  --paper:#EDE7DC;
+  --muted:#8C857A;
+  --faint:#57524A;
+  --gold:#C8A97A;
+  --brass:#8A6F3D;
+  --line:rgba(237,231,220,0.10);
+
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Archivo",system-ui,sans-serif;
+
+  --gut:clamp(20px,5vw,64px);
+  --spine:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--serif);
+  font-optical-sizing:auto;
+  font-weight:300;
+  font-size:clamp(17px,1.15vw,19px);
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:#000}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+/* grain so the black is not flat */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:60;
+  opacity:.16;mix-blend-mode:overlay;
+}
+
+/* reading spine */
+.spine{
+  position:fixed;left:calc(var(--spine) / 2);top:0;bottom:0;width:1px;
+  background:var(--line);z-index:40;
+}
+.spine i{
+  display:block;width:100%;height:0;background:var(--gold);
+  transform-origin:top;
+}
+@media(max-width:820px){.spine{display:none}}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  padding:22px var(--gut);
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  transition:background .3s ease,padding .3s ease,border-color .3s ease;
+  border-bottom:1px solid transparent;
+}
+header.stuck{
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(14px);
+  padding-top:14px;padding-bottom:14px;
+  border-bottom-color:var(--line);
+}
+.mark{
+  font-family:var(--serif);font-weight:400;font-size:19px;
+  letter-spacing:.14em;text-decoration:none;white-space:nowrap;
+}
+.mark span{color:var(--gold)}
+nav{display:flex;gap:clamp(16px,2vw,30px);font-family:var(--sans);font-size:14px;font-weight:400}
+nav a{
+  color:var(--muted);text-decoration:none;padding:4px 0;
+  border-bottom:1px solid transparent;transition:color .2s,border-color .2s;
+}
+nav a:hover,nav a:focus-visible{color:var(--paper);border-bottom-color:var(--gold)}
+nav a.here{color:var(--paper);border-bottom-color:var(--brass)}
+@media(max-width:820px){
+  header{flex-direction:column;align-items:flex-start;gap:10px}
+  nav{gap:14px;font-size:13px;flex-wrap:wrap}
+}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ---------- layout ---------- */
+.wrap{padding-left:var(--gut);padding-right:var(--gut);max-width:1240px}
+.col{max-width:64ch}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding-top:140px;padding-bottom:80px;
+}
+.rule{height:1px;background:var(--gold);width:0;margin-bottom:clamp(28px,5vh,54px)}
+.hero h1{
+  font-family:var(--serif);font-weight:200;
+  font-size:clamp(2.4rem,6.4vw,5.6rem);
+  line-height:1.04;letter-spacing:-.022em;
+  margin:0 0 clamp(28px,4vh,44px);max-width:19ch;
+}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--gold)}
+.hero p{
+  font-size:clamp(1.05rem,1.5vw,1.35rem);color:var(--muted);
+  max-width:52ch;margin:0 0 clamp(34px,5vh,52px);font-weight:300;
+}
+.lede-actions{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--sans);font-size:14.5px}
+.btn{
+  display:inline-block;text-decoration:none;padding:13px 26px;
+  border:1px solid var(--brass);color:var(--paper);
+  transition:background .25s,color .25s,border-color .25s;
+}
+.btn:hover,.btn:focus-visible{background:var(--gold);border-color:var(--gold);color:#000}
+.btn.quiet{border-color:var(--line);color:var(--muted)}
+.btn.quiet:hover,.btn.quiet:focus-visible{color:var(--paper);border-color:var(--paper);background:transparent}
+
+/* ---------- reveal ---------- */
+.r{opacity:0}
+.r.on{opacity:1}
+
+/* ---------- argument ---------- */
+.argument{padding:clamp(80px,12vh,150px) 0;border-top:1px solid var(--line)}
+.movement{margin-bottom:clamp(56px,8vh,96px)}
+.movement:last-child{margin-bottom:0}
+.movement h2{
+  font-weight:300;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.18;
+  letter-spacing:-.015em;margin:0 0 20px;max-width:24ch;
+}
+.movement p{margin:0 0 20px;max-width:64ch;color:#D6CFC4}
+.movement p:last-child{margin-bottom:0}
+.pull{
+  font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.32;font-weight:200;
+  color:var(--paper);border-left:1px solid var(--gold);
+  padding:6px 0 6px 28px;margin:clamp(32px,5vh,52px) 0;max-width:36ch;
+}
+
+/* ---------- two doors ---------- */
+.doors{border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr}
+.door{
+  padding:clamp(48px,8vh,104px) var(--gut);
+  text-decoration:none;display:block;position:relative;
+  transition:background .35s ease;
+}
+.door + .door{border-left:1px solid var(--line)}
+.door:hover,.door:focus-visible{background:var(--raise)}
+.door h3{
+  font-weight:300;font-size:clamp(1.5rem,2.6vw,2.2rem);margin:0 0 16px;letter-spacing:-.01em;
+}
+.door p{color:var(--muted);margin:0 0 26px;max-width:38ch;font-size:1rem}
+.door .go{
+  font-family:var(--sans);font-size:13.5px;color:var(--gold);
+  border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .25s;
+}
+.door:hover .go,.door:focus-visible .go{border-bottom-color:var(--gold)}
+@media(max-width:820px){
+  .doors{grid-template-columns:1fr}
+  .door + .door{border-left:0;border-top:1px solid var(--line)}
+}
+
+/* ---------- standing ---------- */
+.standing{padding:clamp(70px,11vh,130px) 0;border-top:1px solid var(--line)}
+.standing h2{
+  font-weight:200;font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.24;
+  max-width:26ch;margin:0 0 28px;letter-spacing:-.015em;
+}
+.standing p{color:var(--muted);max-width:58ch;margin:0 0 18px}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:clamp(48px,7vh,80px) var(--gut) 44px;
+  font-family:var(--sans);font-size:14px;color:var(--faint);
+}
+.fgrid{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;margin-bottom:46px}
+.fnav{display:flex;flex-direction:column;gap:9px}
+.fnav a{color:var(--muted);text-decoration:none}
+.fnav a:hover,.fnav a:focus-visible{color:var(--paper)}
+.fmark{font-family:var(--serif);font-size:20px;letter-spacing:.14em;color:var(--paper)}
+.fmark span{color:var(--gold)}
+.legal{max-width:62ch;line-height:1.7}
+.legal a{color:var(--muted)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .r{opacity:1}
+  .rule{width:120px}
+}
+</style>
+</head>
+<body>
+
+<svg class="grain" aria-hidden="true"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<div class="spine" aria-hidden="true"><i id="spinefill"></i></div>
+
+<header id="hdr">
+  <a class="mark" href="/">VIRTUS <span>VENTURES</span></a>
+  <nav>
+    <a href="/thesis.html">Thesis</a>
+    <a href="/founders.html">Founders</a>
+    <a href="/funds.html">Funds</a>
+    <a href="/about.html">About</a>
+    <a href="/shop.html">Shop</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero wrap">
+    <div class="rule" id="rule"></div>
+    <h1 class="r" data-d="1">Good companies and patient capital get built three miles apart and never <em>meet</em>.</h1>
+    <p class="r" data-d="2">Virtus Ventures works the seam between them. We find the operators the market has not priced yet, and we put them in front of the people who should have found them first.</p>
+    <div class="lede-actions r" data-d="3">
+      <a class="btn" href="/thesis.html">Read the thesis</a>
+      <a class="btn quiet" href="/founders.html">Bring us a company</a>
+    </div>
+  </section>
+
+  <section class="argument wrap">
+    <div class="col">
+
+      <div class="movement">
+        <h2>The failure is not a shortage of money or a shortage of talent.</h2>
+        <p>There is more uncommitted venture capital sitting idle right now than the market knows what to do with, and there are more technically serious founders in the Baltimore and Washington corridor than any single fund has the hours to meet. Both of those facts are true at the same time, in the same region, and they stay true year after year because nothing in between them is doing its job.</p>
+        <p>What is scarce is not capital and it is not talent. What is scarce is attention that has been spent well, and the willingness to look somewhere that does not already have a line out the door.</p>
+      </div>
+
+      <p class="pull">Most sourcing is a popularity contest dressed up as diligence.</p>
+
+      <div class="movement">
+        <h2>Deal flow arrives sorted by visibility, not by quality.</h2>
+        <p>An investor sees the founders who know how to be seen. Demo days, accelerator cohorts, warm introductions passed between funds that already share a portfolio, and the same handful of names circulating through the same rooms. That process is efficient at surfacing people who are good at being surfaced, and it is close to useless at surfacing an engineer who has been quietly building something durable for four years without a single tweet about it.</p>
+        <p>The founders who are hardest to find are frequently the ones worth finding, and the entire discovery machine is pointed away from them.</p>
+      </div>
+
+      <div class="movement">
+        <h2>So we do the part nobody is paid to do.</h2>
+        <p>We go and look. We work through the state economic development offices, the university labs, the veteran operator networks, and the regional programs that see companies eighteen months before a fund ever will, and we build real relationships with the people running them. When a fund tells us the profile it cannot find, that groundwork is what lets us answer instead of guess.</p>
+        <p>None of this scales the way software scales, and it is not supposed to. We work with a small number of companies at a time because the work is judgment, and judgment does not survive being run at volume.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="doors">
+    <a class="door" href="/founders.html">
+      <h3>If you are building</h3>
+      <p>You have a company that works and a network that does not yet reach the people who fund companies like yours. That gap is the thing we close.</p>
+      <span class="go">What we do for founders</span>
+    </a>
+    <a class="door" href="/funds.html">
+      <h3>If you are investing</h3>
+      <p>Tell us the profile you keep failing to find. We will go find it, and we will hand you the ones worth your afternoon.</p>
+      <span class="go">What we do for funds</span>
+    </a>
+  </div>
+
+  <section class="standing wrap">
+    <div class="col">
+      <h2>A firm is worth what its judgment is worth.</h2>
+      <p>Virtus Ventures is early, and we would rather say so plainly than dress it up. What we can point to is the work itself, the companies currently in front of us, and the relationships across Maryland's economic development and university ecosystem that took real time to earn.</p>
+      <p>If that is the basis you want to evaluate us on, we are easy to reach.</p>
+      <p style="margin-top:32px"><a class="btn" href="/contact.html">Start a conversation</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="fmark">VIRTUS <span>VENTURES</span></div>
+      <div style="margin-top:12px;color:var(--muted)">Annapolis, Maryland</div>
+    </div>
+    <div class="fnav">
+      <a href="/thesis.html">Thesis</a>
+      <a href="/founders.html">Founders</a>
+      <a href="/funds.html">Funds</a>
+    </div>
+    <div class="fnav">
+      <a href="/about.html">About</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+  <p class="legal">Virtus Ventures LLC is a Maryland limited liability company. Nothing on this site is an offer to sell or a solicitation of an offer to buy any security, and nothing here should be read as investment, legal, or tax advice. Any securities activity requiring registration is conducted only through appropriately registered parties.</p>
+  <p class="legal" style="margin-top:18px">© 2026 Virtus Ventures LLC</p>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* sticky nav */
+  var hdr = document.getElementById('hdr');
+  function onScroll(){
+    hdr.classList.toggle('stuck', window.scrollY > 40);
+    var h = document.body.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(window.scrollY / h, 1) : 0;
+    fill.style.height = (p * 100) + '%';
+  }
+  var fill = document.getElementById('spinefill');
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(reduce) return;
+
+  /* one orchestrated load sequence: gold rule draws, then lines cut in */
+  var rule = document.getElementById('rule');
+  requestAnimationFrame(function(){
+    rule.style.transition = 'width 900ms cubic-bezier(.16,.84,.44,1)';
+    rule.style.width = '120px';
+  });
+  document.querySelectorAll('.hero .r').forEach(function(el){
+    var d = parseInt(el.dataset.d,10) || 1;
+    setTimeout(function(){ el.classList.add('on'); }, 620 + d*110);
+  });
+
+  /* hard cut on scroll, no fades */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('on');
+      io.unobserve(e.target);
+    });
+  },{threshold:.18});
+  document.querySelectorAll('.movement, .pull, .door, .standing .col').forEach(function(el,i){
+    el.classList.add('r');
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
