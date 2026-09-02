@@ -48,7 +48,7 @@ Do not invent new components, new spacing values, or new type sizes for a new pa
 --raise: #121110   raised surface, hover states
 --paper: #EDE7DC   primary text, warm off-white
 --muted: #8C857A   secondary text
---faint: #57524A   tertiary, legal, metadata
+--faint: #57524A   non-text only. 2.71:1 on black, fails AA. Never use for readable copy.
 --gold:  #C8A97A   the single accent
 --brass: #8A6F3D   deeper gold, for rules and quiet borders
 --line:  rgba(237,231,220,0.10)  hairline borders
