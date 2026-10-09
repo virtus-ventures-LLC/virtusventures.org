@@ -1,105 +1,41 @@
-# Virtus Ventures — Design Brainstorm
+# Virtus Ventures Website Design Direction
 
-## Context
-- Umbrella LLC shell website
-- Domain: virtusventures.org (connecting to Squarespace)
-- Logo: Gold geometric swirl on black with "V" diamond center
-- Brand colors from logo: Gold (#D4A843 / #C9952C), Black (#0A0A0A), White (#FFFFFF)
+## Ground-truth reference
 
----
+The supplied launch specification and the September 2026 Virtus Ventures Brand Kit are the canonical references. When a template convention conflicts with them, the Virtus references win. The site is a printed research note rendered for a screen, not a startup landing page, luxury brand page, or conventional venture capital portfolio site.
 
-<response>
-<text>
-## Idea 1: "Dark Sovereign" — Brutalist Luxury
+## Chosen design philosophy
 
-**Design Movement:** Neo-Brutalist meets Luxury Minimalism
+**Design movement:** Editorial modernism informed by academic working papers, institutional research notes, and carefully typeset investment memoranda.
 
-**Core Principles:**
-- Commanding presence through stark contrast and bold geometry
-- Gold as a singular accent against deep black voids
-- Architectural negative space that conveys authority
-- Typography as structure, not decoration
+**Core principles:** The design demonstrates confidence through density and restraint. It is left aligned, text first, typographically rigorous, and structurally quiet. Hierarchy comes from rules, spacing, marginalia, and weight rather than display scale. Every visual element must support reading or orientation.
 
-**Color Philosophy:** Near-black backgrounds (oklch(0.12 0.005 60)) with gold (#C9952C) used sparingly as a blade of light cutting through darkness. White text for hierarchy, muted gray for secondary.
+**Color philosophy:** The communication surface is warm paper, not black. Near-black ink carries the argument, Soft handles secondary information, and Brass appears only in rules and footnote markers because it does not meet the body-text contrast threshold on Paper. The black and gold identity is confined to the supplied logo artwork. No third color is introduced, including for validation states.
 
-**Layout Paradigm:** Full-viewport sections with asymmetric gold accent lines. Content pushed to edges, leaving vast central voids. The logo floats in commanding isolation.
+**Layout paradigm:** A publication shell uses a firm masthead, a single navigation line, and an asymmetric reading grid with a 170px annotation column beside a main measure capped at 64 characters. Below 860px, notes become inline annotations behind a 2px Brass rule. Sections are separated by hairlines rather than boxes or background changes.
 
-**Signature Elements:**
-- Thin gold horizontal rules that extend edge-to-edge
-- A single diagonal gold slash as a recurring motif
-- Oversized serif typography for the company name
+**Signature elements:** Short institutional marginalia, numbered footnotes, and precise horizontal rules recur throughout the site. A single opening drop cap and at most one pull quote per page provide texture without turning prose into marketing modules.
 
-**Interaction Philosophy:** Minimal — the site is a statement, not a conversation. Subtle gold shimmer on hover states only.
+**Interaction philosophy:** The material is stable and immediate. Links remain plainly underlined where they occur in prose. Navigation, controls, and form fields expose clear keyboard focus. There are no menus, overlays, icons, or decorative interaction patterns.
 
-**Animation:** Slow fade-ins (800ms+), gold lines drawing themselves across the viewport on scroll.
+**Animation:** None. The only visual state changes are link and button hover treatment and keyboard focus rings. No entrance effects, fades, transforms, loading animations, parallax, counters, or motion libraries are used.
 
-**Typography System:** Playfair Display for headings (weight 700), Outfit for body (weight 300-400). Extreme size contrast between heading and body.
-</text>
-<probability>0.08</probability>
-</response>
+**Typography system:** Source Serif 4 sets all body copy and headings. IBM Plex Sans is limited to navigation, marginalia, captions, table headers, controls, and footnotes. Body text is 16.5px at 1.62 line height. Standard headings are 1.09rem at weight 600. Page titles use `clamp(1.65rem, 3.1vw, 2.15rem)` and remain left aligned. The reading measure is no wider than 64 characters.
 
-<response>
-<text>
-## Idea 2: "Gilded Monolith" — Swiss Precision with Gold Leaf
+**Brand essence:** Virtus Ventures is a venture relationship firm for overlooked technical operators and fund principals who need a more deliberate discovery mechanism. It is considered, literate, and unhurried.
 
-**Design Movement:** International Typographic Style (Swiss Design) infused with Art Deco opulence
+**Brand voice:** Headlines name the argument rather than advertise an outcome. Calls to action sound like ordinary human requests, not conversion copy. Example lines: “The region is not short of capital.” and “Tell us what you are building, or what you have been unable to find.”
 
-**Core Principles:**
-- Grid-perfect alignment with mathematical precision
-- Gold used as a material texture, not just a color
-- Information hierarchy through scale and weight alone
-- Restrained elegance — every element earns its place
+**Wordmark and logo:** The supplied black-ground raster lockup is preserved without recoloring, redrawing, shadow, rotation, or stretching. It appears at the specified compact masthead scale. Favicon crops are derived from the supplied square mark without changing the artwork.
 
-**Color Philosophy:** True black (#0A0A0A) as canvas. Gold gradient (linear from #B8860B to #FFD700) for the logo and key accents. Cool gray (#8A8A8A) for supporting text. No other colors.
+**Signature brand color:** Paper `#F2EFE7` is the unmistakable communication surface. Brass `#8A6F3D` is a supporting structural accent only.
 
-**Layout Paradigm:** Centered single-column with generous vertical rhythm. Content stacked vertically with mathematical spacing (golden ratio). Full-bleed black with a contained content column.
+## Implementation constraints
 
-**Signature Elements:**
-- Gold gradient border on the bottom of the navigation
-- A subtle radial gold glow behind the logo (like light emanating from it)
-- Geometric gold corner accents framing sections
+The implementation must not include photographs, generated imagery, illustrations, icons, cards, feature grids, statistic tiles, gradients outside the supplied logo, shadows, dark mode, rounded decorative containers, or oversized hero typography. Copy must contain no em dashes, buzzwords, invented proof, invented biographies, credentials, testimonials, clients, or portfolio companies. The supplied compliance paragraph appears at readable body size on every route.
 
-**Interaction Philosophy:** Precision micro-interactions — buttons with gold border that fills on hover, links that gain a gold underline.
+## Style Decisions
 
-**Animation:** Logo entrance with a subtle scale + opacity (600ms ease-out). Section reveals with upward drift (transform: translateY).
+Because the supplied asset is the archival black-ground lockup rather than the light-ground transparent lockup named in the launch specification, the artwork will remain on its native black identity surface and be displayed compactly within the paper masthead. This preserves the supplied pixels and the brand kit's rule that the logo may live on black, while keeping the rest of the communication surface on Paper.
 
-**Typography System:** Cormorant Garamond for display (elegant serif), Inter for functional text. The serif carries prestige, the sans carries clarity.
-</text>
-<probability>0.06</probability>
-</response>
-
-<response>
-<text>
-## Idea 3: "Obsidian & Gold" — Editorial Darkness
-
-**Design Movement:** Dark Editorial / Magazine Layout meets Corporate Gravitas
-
-**Core Principles:**
-- Cinematic atmosphere — the site feels like opening a premium brand book
-- Layered depth through subtle gradients and shadow
-- Content as curated editorial, not a wall of information
-- The gold mark is sacred — used only for the logo and one CTA
-
-**Color Philosophy:** Layered blacks — background at oklch(0.08 0 0), card surfaces at oklch(0.14 0.003 60), elevated elements at oklch(0.18 0.005 60). Gold reserved exclusively for the logo and primary action. All text in white/gray spectrum.
-
-**Layout Paradigm:** Offset grid with the logo anchored top-left, content flowing in an editorial column offset to the right. Asymmetric but balanced. Large breathing room between sections.
-
-**Signature Elements:**
-- Subtle noise texture overlay on the background (opacity 3-5%)
-- A single vertical gold line running the left margin as a "spine"
-- Soft vignette darkening at viewport edges
-
-**Interaction Philosophy:** Cinematic — slow, deliberate reveals. The site unfolds like turning pages of a premium annual report.
-
-**Animation:** Staggered entrance animations with 100ms delays between elements. Parallax-lite on the logo. Smooth scroll with eased sections.
-
-**Typography System:** DM Serif Display for the company name (one use, hero-sized), Geist for all other text (clean, modern, variable weight). Generous letter-spacing on uppercase labels.
-</text>
-<probability>0.07</probability>
-</response>
-
----
-
-## Selected Approach: Idea 3 — "Obsidian & Gold" (Editorial Darkness)
-
-This approach best matches the logo's premium feel and creates a commanding shell site that says "serious holding company" without needing much content. The editorial darkness gives depth and sophistication, the layered blacks create dimension, and the reserved use of gold makes the brand mark feel sacred and intentional.
+Contact controls are treated as ruled intake fields rather than boxed application components, so the form remains subordinate to the prose. Brass recurs as a structural mark above desktop marginalia and beside mobile marginalia, while remaining absent from body text. Team information is set as a continuation of the firm note with restrained hierarchy. The canonical `Bio pending.` text and the three explicit launch placeholders remain because the supplied launch prompt requires them until the owner provides final values.

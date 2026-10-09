@@ -1,0 +1,187 @@
+<!-- Virtus editorial modernism: a plain, accessible intake note with inline validation and no conversion-page theatrics. -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contact Virtus Ventures about a company, a fund sourcing mandate, or a regional institutional relationship." />
+    <title>Contact | Virtus Ventures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/site.css" /><link rel="icon" type="image/png" sizes="32x32" href="/manus-storage/favicon-32_6b7f02fa.png" /><link rel="apple-touch-icon" sizes="180x180" href="/manus-storage/favicon-180_60007071.png" /><link rel="icon" type="image/png" sizes="512x512" href="/manus-storage/favicon-512_70571ad4.png" />
+    <style>
+      #intake .hp { position: absolute; left: -9999px; opacity: 0; height: 0; min-height: 0; width: 0; padding: 0; border: 0; }
+      #intake { max-width: 62ch; }
+      #intake label { display: block; font-family: var(--sans); font-size: 11.5px; font-weight: 400; color: #5b564c; margin: 22px 0 5px; }
+      #intake .opt { font-style: italic; }
+      #intake input,
+      #intake select,
+      #intake textarea { width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(26, 24, 20, 0.18); font-family: var(--serif); font-size: 16.5px; color: #1a1814; padding: 6px 0; border-radius: 0; }
+      #intake textarea { min-height: 0; resize: vertical; line-height: 1.62; }
+      #intake input:focus,
+      #intake select:focus,
+      #intake textarea:focus { outline: none; border-bottom: 2px solid #8a6f3d; }
+      #intake input:focus-visible,
+      #intake select:focus-visible,
+      #intake textarea:focus-visible,
+      #send:focus-visible,
+      #email-ceo:focus-visible { outline: 2px solid #8a6f3d; outline-offset: 3px; }
+      #intake .err { font-family: var(--sans); font-size: 12px; color: #5b564c; margin: 5px 0 0; min-height: 0; }
+      #intake .err:empty { display: none; }
+      #contact-actions { display: flex; align-items: baseline; flex-wrap: wrap; gap: 1.25rem; margin-top: 28px; }
+      #send,
+      #email-ceo { min-height: 0; margin: 0; background: none; border: 0; border-bottom: 1.5px solid #8a6f3d; padding: 0 0 2px; cursor: pointer; font-family: var(--sans); font-size: 14px; font-weight: 400; line-height: 1.5; color: #1a1814; text-decoration: none; }
+      #send:hover,
+      #send:focus-visible,
+      #email-ceo:hover,
+      #email-ceo:focus-visible { background: none; color: #1a1814; border-bottom-width: 3px; }
+      #send[disabled] { color: #5b564c; cursor: default; opacity: 1; border-bottom-width: 1.5px; }
+      #done:focus { outline: none; }
+    </style>
+  </head>
+  <body data-page="contact">
+    <div class="site">
+      <header class="masthead"><a class="brand-link" href="/" aria-label="Virtus Ventures home"><img class="brand-lockup" src="/manus-storage/virtus-lockup-onblack-original_952628b7.png" alt="Virtus Ventures" /></a><p class="masthead-meta"><strong>Intake note</strong>Annapolis, Maryland</p></header>
+      <nav class="site-nav" aria-label="Primary navigation"><ul><li><a data-nav="thesis" href="/thesis.html">Thesis</a></li><li><a data-nav="founders" href="/founders.html">Founders</a></li><li><a data-nav="funds" href="/funds.html">Funds</a></li><li><a data-nav="about" href="/about.html">About</a></li><li><a data-nav="shop" href="/shop.html">Shop</a></li><li><a data-nav="contact" href="/contact.html">Contact</a></li></ul></nav>
+      <main id="content">
+        <section class="content-grid">
+          <aside class="margin-note"><strong>Contact</strong>Write about the company, search, or institution as it actually stands. A polished pitch is not required.</aside>
+          <div class="prose">
+            <h1>Tell us what you are building, or what you have been unable to find</h1>
+            <p class="standfirst">We read notes from technical operators, fund principals, and institutions across the Baltimore and Washington corridor.</p>
+            <p class="opening">A useful first note is specific and ordinary. If you are building a company, tell us what it does, how you came to the problem, what has been built, and why capital may be relevant now. If you represent a fund, describe the profile you have been unable to source and what your prior search has produced. If you work within a regional institution, tell us what you see and what kind of relationship would be useful.</p>
+          </div>
+        </section>
+        <section class="content-grid">
+          <aside class="margin-note"><strong>Form</strong>Submissions remain on this page. Validation and delivery messages appear beside the relevant field.</aside>
+          <div class="prose movement">
+            <form id="intake" novalidate>
+              <input type="hidden" name="access_key" value="6b8db0a9-1d83-4556-a575-c7683f2f1ede" />
+              <input type="hidden" name="subject" id="subj" value="Virtus enquiry: I am building a company" />
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error" />
+              <p class="err" id="f-name-error" data-for="f-name"></p>
+
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-error" />
+              <p class="err" id="f-email-error" data-for="f-email"></p>
+
+              <label for="f-org">Organization <span class="opt">optional</span></label>
+              <input id="f-org" name="organization" type="text" autocomplete="organization" />
+
+              <label for="f-aud">You are</label>
+              <select id="f-aud" name="audience" required aria-describedby="f-aud-error">
+                <option value="Founder">I am building a company</option>
+                <option value="Investor">I am investing</option>
+                <option value="Other">Something else</option>
+              </select>
+              <p class="err" id="f-aud-error" data-for="f-aud"></p>
+
+              <label for="f-msg" id="msglabel">What are you building, and what has capital access looked like so far</label>
+              <textarea id="f-msg" name="message" rows="6" required aria-describedby="f-msg-error"></textarea>
+              <p class="err" id="f-msg-error" data-for="f-msg"></p>
+
+              <div id="contact-actions">
+                <button type="submit" id="send">Send</button>
+                <a id="email-ceo" href="mailto:yuri.andrews@virtusventures.org" aria-label="Email Yuri Andrews directly">Email me</a>
+              </div>
+              <p class="err" id="formerr" role="status" aria-live="polite"></p>
+            </form>
+            <div id="done" role="status" tabindex="-1" hidden>
+              <p>Your note has been received. Everything sent here is read by Yuri Andrews directly.</p>
+              <p>You can expect a reply within two business days.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer"><div class="footer-links" aria-label="Footer navigation"><a href="/">Argument in brief</a><a href="/thesis.html">Full thesis</a><a href="/founders.html">For founders</a><a href="/funds.html">For funds</a><a href="/about.html">About the firm</a><a href="/shop.html">Shop</a></div><p class="compliance">Virtus Ventures LLC is a Maryland limited liability company. Nothing on this site is an offer to sell or a solicitation of an offer to buy any security, and nothing here should be read as investment, legal, or tax advice. Any securities activity requiring registration is conducted only through appropriately registered parties.</p><p class="copyright">© 2026 Virtus Ventures LLC. Annapolis, Maryland.</p></footer>
+    </div>
+    <script src="/js/site.js" defer></script>
+    <script>
+      (function () {
+        var form = document.getElementById("intake");
+        var audience = document.getElementById("f-aud");
+        var messageLabel = document.getElementById("msglabel");
+        var subject = document.getElementById("subj");
+        var button = document.getElementById("send");
+        var done = document.getElementById("done");
+        var formError = document.getElementById("formerr");
+        var prompts = {
+          Founder: "What are you building, and what has capital access looked like so far",
+          Investor: "What profile have you been unable to source",
+          Other: "What would you like to discuss"
+        };
+
+        function updateAudience() {
+          messageLabel.textContent = prompts[audience.value];
+          subject.value = "Virtus enquiry: " + audience.options[audience.selectedIndex].text;
+        }
+
+        function setError(id, message) {
+          var field = document.getElementById(id);
+          var error = form.querySelector('.err[data-for="' + id + '"]');
+          if (error) error.textContent = message || "";
+          if (field) {
+            if (message) field.setAttribute("aria-invalid", "true");
+            else field.removeAttribute("aria-invalid");
+          }
+        }
+
+        function validate() {
+          var valid = true;
+          ["f-name", "f-email", "f-aud", "f-msg"].forEach(function (id) { setError(id, ""); });
+          if (!form.elements.name.value.trim()) {
+            setError("f-name", "Please enter your name.");
+            valid = false;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.elements.email.value.trim())) {
+            setError("f-email", "Please enter an email address we can reply to.");
+            valid = false;
+          }
+          if (!audience.value) {
+            setError("f-aud", "Please choose the description that fits best.");
+            valid = false;
+          }
+          if (form.elements.message.value.trim().length < 10) {
+            setError("f-msg", "A sentence or two is enough, but we need something to go on.");
+            valid = false;
+          }
+          return valid;
+        }
+
+        audience.addEventListener("change", updateAudience);
+        updateAudience();
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          formError.textContent = "";
+          if (!validate()) return;
+
+          button.disabled = true;
+          button.textContent = "Sending";
+          var data = Object.fromEntries(new FormData(form).entries());
+
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify(data)
+          })
+            .then(function (response) { return response.json(); })
+            .then(function (result) {
+              if (!result.success) throw new Error(result.message || "failed");
+              form.hidden = true;
+              done.hidden = false;
+              done.focus();
+            })
+            .catch(function () {
+              button.disabled = false;
+              button.textContent = "Send";
+              formError.textContent = "That did not send. Please use Email me to contact Yuri directly.";
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>

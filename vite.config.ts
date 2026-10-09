@@ -1,6 +1,3 @@
-import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
-import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
@@ -203,7 +200,7 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const plugins = [vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
   plugins,
@@ -216,13 +213,23 @@ export default defineConfig({
   },
   envDir: path.resolve(import.meta.dirname),
   root: path.resolve(import.meta.dirname, "client"),
+  publicDir: path.resolve(import.meta.dirname, "client", "public"),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        home: path.resolve(import.meta.dirname, "client", "index.html"),
+        thesis: path.resolve(import.meta.dirname, "client", "thesis.html"),
+        founders: path.resolve(import.meta.dirname, "client", "founders.html"),
+        funds: path.resolve(import.meta.dirname, "client", "funds.html"),
+        about: path.resolve(import.meta.dirname, "client", "about.html"),
+        shop: path.resolve(import.meta.dirname, "client", "shop.html"),
+        contact: path.resolve(import.meta.dirname, "client", "contact.html"),
+      },
+    },
   },
   server: {
-    port: 3000,
-    strictPort: false, // Will find next available port if 3000 is busy
     host: true,
     allowedHosts: [
       ".manuspre.computer",
