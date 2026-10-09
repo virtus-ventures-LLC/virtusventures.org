@@ -1,0 +1,15 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# Deploys the site from `main` as a Node web service.
+services:
+  - type: web
+    name: virtus-ventures
+    runtime: node
+    plan: starter
+    branch: main
+    autoDeploy: true
+    buildCommand: npx --yes pnpm@10.4.1 install --frozen-lockfile && npx --yes pnpm@10.4.1 build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

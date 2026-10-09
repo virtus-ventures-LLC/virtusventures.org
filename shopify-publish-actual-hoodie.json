@@ -1,0 +1,11 @@
+{
+  "query": "mutation PublishActualHoodie($id: ID!, $input: [PublicationInput!]!) { publishablePublish(id: $id, input: $input) { publishable { publishedOnCurrentPublication } shop { name } userErrors { field message } } }",
+  "variables": {
+    "id": "gid://shopify/Product/8031291572272",
+    "input": [
+      {
+        "publicationId": "gid://shopify/Publication/158948229168"
+      }
+    ]
+  }
+}

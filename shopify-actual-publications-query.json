@@ -1,0 +1,3 @@
+{
+  "query": "query ActualStorePublications { shop { name myshopifyDomain } publications(first: 20) { nodes { id name app { title } } } }"
+}
