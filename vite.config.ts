@@ -203,7 +203,25 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+/**
+ * Serves the auth API (/api/auth/*) from the Vite dev server so sign-in works
+ * under `pnpm dev`. In production the same router is mounted by server/index.ts.
+ */
+function vitePluginAuthApi(): Plugin {
+  return {
+    name: "auth-api",
+    async configureServer(server: ViteDevServer) {
+      if (process.env.VITEST) return;
+      const { default: express } = await import("express");
+      const { createAuth } = await import("./server/auth");
+      const app = express();
+      app.use("/api/auth", createAuth().router);
+      server.middlewares.use(app);
+    },
+  };
+}
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginAuthApi()];
 
 export default defineConfig({
   plugins,

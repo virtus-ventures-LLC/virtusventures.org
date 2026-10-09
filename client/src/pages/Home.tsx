@@ -7,13 +7,17 @@
  * - Subtle noise texture and vignette for depth
  */
 
+import { useAuth } from "@/contexts/AuthContext";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 const LOGO_URL = "/manus-storage/virtus-logo_b28440bd.png";
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663617491012/6cMt3E4Kagu529nNL8WhbC/hero-bg-DkunWNtZEHz7R3GDVcJgLv.webp";
 const TEXTURE_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663617491012/6cMt3E4Kagu529nNL8WhbC/texture-abstract-nNEUs3LS9cJApFut6LSLtc.webp";
 
 export default function Home() {
+  const { user, loading } = useAuth();
+
   return (
     <div className="min-h-screen bg-[oklch(0.08_0_0)] text-[oklch(0.92_0.005_60)] overflow-hidden">
       {/* Navigation */}
@@ -27,9 +31,17 @@ export default function Home() {
                 className="h-10 w-auto"
               />
             </div>
-            <div className="hidden md:flex items-center gap-8 text-sm tracking-wide uppercase font-light text-[oklch(0.7_0.005_60)]">
-              <a href="#about" className="hover:text-[oklch(0.75_0.12_75)] transition-colors duration-300">About</a>
-              <a href="#contact" className="hover:text-[oklch(0.75_0.12_75)] transition-colors duration-300">Contact</a>
+            <div className="flex items-center gap-8 text-sm tracking-wide uppercase font-light text-[oklch(0.7_0.005_60)]">
+              <a href="#about" className="hidden md:inline hover:text-[oklch(0.75_0.12_75)] transition-colors duration-300">About</a>
+              <a href="#contact" className="hidden md:inline hover:text-[oklch(0.75_0.12_75)] transition-colors duration-300">Contact</a>
+              {!loading && (
+                <Link
+                  href={user ? "/account" : "/signin"}
+                  className="border border-[oklch(0.75_0.12_75)/60] text-[oklch(0.75_0.12_75)] hover:bg-[oklch(0.75_0.12_75)] hover:text-black rounded-md px-4 py-2 transition-colors duration-300"
+                >
+                  {user ? "Account" : "Sign in"}
+                </Link>
+              )}
             </div>
           </div>
         </div>
