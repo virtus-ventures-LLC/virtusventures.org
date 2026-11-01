@@ -4,7 +4,7 @@ services:
   - type: web
     name: virtus-ventures
     runtime: node
-    plan: starter
+    plan: free
     branch: main
     autoDeploy: true
     buildCommand: npx --yes pnpm@10.4.1 install --frozen-lockfile && npx --yes pnpm@10.4.1 build
